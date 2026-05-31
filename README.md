@@ -2,7 +2,7 @@
 
 Bibliothèque de skills IA pour Claude Code et agents compatibles (Copilot, Cursor, Codex CLI, Gemini CLI).
 
-Chaque fichier `.skill` est une archive autonome contenant les instructions (`SKILL.md`) et les références documentaires associées. Les skills suivent l'**Agent Skills open standard** : ils sont universels et ne dépendent pas d'une plateforme spécifique.
+Chaque skill est un **dossier** contenant les instructions (`SKILL.md`) et les références documentaires associées. Les skills suivent l'**Agent Skills open standard** : ils sont universels et ne dépendent pas d'une plateforme spécifique.
 
 ---
 
@@ -11,8 +11,8 @@ Chaque fichier `.skill` est une archive autonome contenant les instructions (`SK
 ### Claude Code
 
 ```bash
-# Copier le fichier .skill dans le répertoire de skills de Claude Code
-cp skills/<nom>.skill ~/.claude/skills/
+# Copier le dossier du skill dans le répertoire de skills de Claude Code
+cp -r skills/<nom> ~/.claude/skills/
 ```
 
 Les skills sont détectés automatiquement au prochain démarrage de session.
@@ -21,7 +21,7 @@ Les skills sont détectés automatiquement au prochain démarrage de session.
 
 ## Skills disponibles
 
-### `agentic-mastery.skill`
+### `agentic-mastery/`
 
 **Professeur expert en IA agentique**
 
@@ -38,7 +38,7 @@ Enseigne la conception et l'implémentation de workflows agentiques : agents out
 
 ---
 
-### `instructeur.skill`
+### `instructeur/`
 
 **Professeur IT Dev / Ops / Infra**
 
@@ -59,7 +59,7 @@ Enseigne l'informatique par la pratique : cas concret, étapes claires, résulta
 
 ---
 
-### `skill-interviewer.skill`
+### `skill-interviewer/`
 
 **Créateur de skills via interview adaptatif**
 
@@ -73,7 +73,7 @@ Crée des skills IA from scratch grâce à un dialogue progressif en 6 questions
 
 ---
 
-### `skill-reviewer.skill`
+### `skill-reviewer/`
 
 **Auditeur et optimiseur de SKILL.md**
 
@@ -88,7 +88,7 @@ Analyse et améliore les skills existants : qualité de la description, efficaci
 
 ---
 
-### `wpf-manager.skill`
+### `wpf-manager/`
 
 **Expert WPF desktop**
 
@@ -104,12 +104,12 @@ Analyse de fichiers XAML, insertion et déplacement de contrôles, scaffolding d
 
 ---
 
-## Structure d'un fichier `.skill`
+## Structure d'un skill
 
 ```
-nom-du-skill.skill          ← archive ZIP renommée
+skills/
 └── nom-du-skill/
-    ├── SKILL.md            ← instructions principales + frontmatter
+    ├── SKILL.md            ← instructions principales + frontmatter YAML
     └── references/
         ├── doc1.md         ← documents de référence
         └── doc2.md
@@ -121,7 +121,7 @@ Le frontmatter YAML du `SKILL.md` définit le `name`, la `description` (utilisé
 
 ## Contribuer
 
-Pour créer un nouveau skill, utiliser le skill `skill-interviewer` qui guide la création via un interview adaptatif, puis soumettre le fichier `.skill` généré.
+Pour créer un nouveau skill, utiliser le skill `skill-interviewer` qui guide la création via un interview adaptatif, puis soumettre le dossier généré.
 
 Pour améliorer un skill existant, utiliser `skill-reviewer` pour obtenir un audit structuré avant de proposer une nouvelle version.
 
